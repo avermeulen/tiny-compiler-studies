@@ -5,7 +5,6 @@ module.exports = function(tokens) {
     function walk() {
 
         var token = tokens[current];
-        //console.log(token);
 
         if (token.type === 'number') {
 
@@ -31,6 +30,7 @@ module.exports = function(tokens) {
                     name: token.value,
                     params: []
                 };
+
                 token = tokens[++current];
 
                 while (
@@ -45,6 +45,8 @@ module.exports = function(tokens) {
                 current++;
                 return node;
             }
+            throw new TypeError(token.type);
+
         }
     }
 
